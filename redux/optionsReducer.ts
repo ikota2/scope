@@ -1,4 +1,4 @@
-import { SET_QUANTITY_WORDS, SET_QUANTITY_LETTERS, SET_STARTING_DISTANCE, SET_FINISH_DISTANCE, SET_SPEED, IOptions } from '../types/types';
+import { OptionActionTypes, OptionAction, IOptions } from '../types/types';
 
 const options: IOptions = {
   startingDistance: 25,
@@ -9,17 +9,17 @@ const options: IOptions = {
 }
 const initialState = options;
   
-export function optionsReducer(state = initialState, action) {
+export function optionsReducer(state = initialState, action: OptionAction) {
   switch (action.type) {
-    case SET_STARTING_DISTANCE:
+    case OptionActionTypes.SET_STARTING_DISTANCE:
       return {...state, startingDistance: action.value};
-    case SET_FINISH_DISTANCE:
+    case OptionActionTypes.SET_FINISH_DISTANCE:
       return {...state, incrementedDistance: action.value };
-    case SET_QUANTITY_WORDS:
+    case OptionActionTypes.SET_QUANTITY_WORDS:
       return {...state, quantityWords: action.value };
-    case SET_QUANTITY_LETTERS:
+    case OptionActionTypes.SET_QUANTITY_LETTERS:
       return {...state, quantityLetters: action.value };
-    case SET_SPEED: 
+    case OptionActionTypes.SET_SPEED: 
       return {...state, speed: action.value};  
     default:
       return state;
