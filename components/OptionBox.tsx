@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { makeStepsFromObj } from "../functions/makeStepsFromObj";
 
+import { setSpeed, setFinishDistance, setStartingDistance, setQuantityLetters, setQuantityWords } from '../redux/actionCreators';
 import { IOptionProperty } from "../types/types";
 
 import { Box } from "./Box";
@@ -13,11 +14,11 @@ import { Title } from "./Title";
 
 
 interface IOptionBoxProps {
-  setQuantityWords: (arg0: number) => number, 
-  setQuantityLetters: (arg0: number) => number, 
-  setStartingDistance: (arg0: number) => number, 
-  setFinishDistance: (arg0: number) => number, 
-  setSpeed: (arg0: number) => number, 
+  setQuantityWords: (arg0: number) => void, 
+  setQuantityLetters: (arg0: number) => void, 
+  setStartingDistance: (arg0: number) => void, 
+  setFinishDistance: (arg0: number) => void, 
+  setSpeed: (arg0: number) => void, 
   title: string, 
   option: IOptionProperty,
 }
@@ -69,14 +70,8 @@ const OptionBox = (props: IOptionBoxProps) => {
   );
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setQuantityWords: (value: number) => dispatch({ type: 'SET_QUANTITY_WORDS', value }),
-    setQuantityLetters: (value: number) => dispatch({ type: 'SET_QUANTITY_LETTERS', value }),
-    setStartingDistance: (value: number) => dispatch({ type: 'SET_STARTING_DISTANCE', value }),
-    setFinishDistance: (value: number) => dispatch({ type: 'SET_FINISH_DISTANCE', value }),
-    setSpeed: (value: number) => dispatch({ type: 'SET_SPEED', value }),
-  };
+const actionCreators = {
+  setSpeed, setFinishDistance, setStartingDistance, setQuantityLetters, setQuantityWords
 }
 
-export default connect(null, mapDispatchToProps)(OptionBox);
+export default connect(null, actionCreators)(OptionBox);
